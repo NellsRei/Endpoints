@@ -1,6 +1,7 @@
 import  express, { json } from "express";
 import Categoryrouter from "./Routers/categoryRoutes";
 import authRouter from "./Routers/authRoutes";
+import Productrouter from "./Routers/productRoutes";
 
 const app = express()
 
@@ -8,6 +9,8 @@ const app = express()
 app.use(json())
 
 app.use("/categories", Categoryrouter)
+app.use("/products", Productrouter)
+
 app.use("/auth", authRouter)
 // app.use("/products", prod)
 

@@ -1,5 +1,5 @@
 CREATE OR ALTER PROCEDURE getCategories
 AS
 BEGIN
-    SELECT * FROM Category
+    SELECT * FROM Categories
 END;

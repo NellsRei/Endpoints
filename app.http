@@ -1,20 +1,22 @@
 
+POST http://localhost:3005/categories
+Content-Type: application/json
 
+{
+   "name":"TV'S"
+}
 
-# POST http://localhost:4000/categories
-# Content-Type: application/json
-# {
-
-# }
+#########
+GET http://localhost:3005/categories
 
 ##########
 POST http://localhost:3005/auth/register
 Content-Type: application/json
 
 {
-   "Name": "John Doe",
-   "Email": "Johnd@gmail.com",
-   "Password": "New@!100"
+   "Name": "Jane Doe",
+   "Email": "JaneD@gmail.com",
+   "Password": "This123@7"
 
 }
 
@@ -23,7 +25,46 @@ POST http://localhost:3005/auth/login
 Content-Type: application/json
 
 {
-   "Email": "Johnd@gmail.com",
-   "Password": "New@!100"
+   "Email": "JaneD@gmail.com",
+   "Password": "This123@7"
 
 }
+
+############
+POST http://localhost:3005/products
+Content-Type: application/json
+
+{
+   "name": "Samsung Screen",
+   "description": "That looks like a picture",
+   "price": 100000,
+   "id": "f49bc4b8-131a-4058-a7be-abd9485e23f1"
+
+}
+
+########
+GET http://localhost:3005/products
+
+#########
+GET http://localhost:3005/products/caa7efec-5e6a-46cb-85bc-8f38f53f65e3
+
+########
+
+PATCH  http://localhost:3005/products/caa7efec-5e6a-46cb-85bc-8f38f53f65e3
+Content-Type: application/json
+
+{
+   "name": "Samsung 3D Screen",
+   "description": "That looks like a picture",
+   "price": 900000,
+   "id": "f49bc4b8-131a-4058-a7be-abd9485e23f1"
+
+}
+
+########
+DELETE http://localhost:3005/products/96353393-9764-428f-ba42-329f9129f1a3
+
+
+
+#######
+GET http://localhost:3005/products/categories/c9707a2e-afd8-45b9-a179-630d334ac8dc
