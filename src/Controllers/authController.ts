@@ -9,7 +9,9 @@ import jwt from "jsonwebtoken";
 import path from 'path'
 import dotenv from 'dotenv'
 dotenv.config({path:path.resolve(__dirname,"../../.env")})
+import { DbHelper } from "../DatabaseHelpers";
 
+const dbInstance = new DbHelper()
 export const registerUser = async (req:Request, res:Response) =>{
     try {
         const userid = uid()
@@ -19,13 +21,14 @@ export const registerUser = async (req:Request, res:Response) =>{
             return res.status(400).json(error.details[0].message)
         }
         const HashPassword = await Bycrypt.hash(Password,10)
-        let pool = await mssql.connect(sqlConfig)
-        await pool.request()
-        .input('Id', userid)
-        .input('Name' , Name)
-        .input('Email', Email)
-        .input('Password' , HashPassword)
-        .execute('addUser')
+        // let pool = await mssql.connect(sqlConfig)
+        // await pool.request()
+        // .input('Id', userid)
+        // .input('Name' , Name)
+        // .input('Email', Email)
+        // .input('Password' , HashPassword)
+        // .execute('addUser')
+        dbInstance.exec('addUser', {userid,Name,Email,HashPassword})
 
         return res.status(201).json({Message:"User is added Successfully"})
     } catch (error) {
@@ -37,10 +40,13 @@ export const loginUser = async (req:Request, res:Response)=>{
     try {
         const {Email,Password}=req.body
 
-        let pool = await mssql.connect(sqlConfig)
-        let user = (await pool.request()
-        .input('Email', Email)
-        .execute('getUser')).recordset as User[]
+        // let pool = await mssql.connect(sqlConfig)
+        // let user = (await pool.request()
+        // .input('Email', Email)
+        // .execute('getUser')).recordset as User[]
+
+        const user = await(await (dbInstance.exec('getUser', {}))).recordset as User []
+        res.status(200).json(user)
 
         if(user.length > 0){
             //validate password

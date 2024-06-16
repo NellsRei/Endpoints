@@ -14,8 +14,8 @@ POST http://localhost:3005/auth/register
 Content-Type: application/json
 
 {
-   "Name": "Jane Doe",
-   "Email": "JaneD@gmail.com",
+   "Name": "John Smith",
+   "Email": "JohnS@gmail.com",
    "Password": "This123@7"
 
 }
@@ -63,8 +63,3 @@ Content-Type: application/json
 
 ########
 DELETE http://localhost:3005/products/96353393-9764-428f-ba42-329f9129f1a3
-
-
-
-#######
-GET http://localhost:3005/products/categories/c9707a2e-afd8-45b9-a179-630d334ac8dc
