@@ -2,11 +2,11 @@
   "name": "products-and-categories",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "../Backend/dist/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:build": "tsc -w",
-    "start:run": "nodemon dist/server.js",
+    "start:run": "nodemon ../Backend/dist/server.js",
     "start": "concurrently npm:start:*"
   },
   "keywords": [],

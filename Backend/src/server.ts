@@ -15,7 +15,7 @@ app.use("/auth", authRouter)
 // app.use("/products", prod)
 
 //port
-app.listen(3005, ()=>{
+app.listen(3004, ()=>{
     console.log('Server Running....');
     
 })
